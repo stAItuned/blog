@@ -2,18 +2,21 @@
 #
 # This config file is meant for settings that affect your whole blog.
 #
-# If you need help with YAML syntax, here are some quick references for you: 
+# If you need help with YAML syntax, here are some quick references for you:
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 
-title: fastpages
-description: An easy to use blogging platform with support for Jupyter Notebooks.
-github_username: stAItuned
+title: "Oriol unraveled"
+description: "Personal website of an enthusiast about open source and statistics"
+logo: images/logo.png
+background_image:   "/images/bg.jpg"
+copyright: "Created by Oriol Abril. Powered by [fastpages](https://fastpages.fast.ai/) and [Basically Basic](https://mmistakes.github.io/jekyll-theme-basically-basic/)"
+github_username: OriolAbril
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "blog"
 
 # OPTIONAL: override baseurl and url if using a custom domain
-# Note: leave out the trailing / from this value. 
+# Note: leave out the trailing / from this value.
 url: "https://stAItuned.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 ###########################################################
@@ -21,11 +24,11 @@ url: "https://stAItuned.github.io" # the base hostname & protocol for your site,
 #
 #### Scenario One: If you do not have a Custom Domain #####
 #    -  if you are not using a custom domain, the baseurl *must* be set to your repo name
-# 
+#
 ####  Scenario Two: If you have a Custom Domain #####
 # 1. If your domain does NOT have a subpath, this leave this value as ""
-# 2. If your domain does have a subpath, you must preceed the value with a / and NOT have a / at the end.  
-#      For example: 
+# 2. If your domain does have a subpath, you must preceed the value with a / and NOT have a / at the end.
+#      For example:
 #           "" is valid
 #           "/blog"        is valid
 #            "/blog/site/" is invalid  ( / at the end)
@@ -34,16 +37,11 @@ url: "https://stAItuned.github.io" # the base hostname & protocol for your site,
 #
 # 3. You must replace the parameter `baseurl` in _action_files/settings.ini with the same value as you set here but WITHOUT QUOTES.
 #
-baseurl: "/blog" # the subpath of your site, e.g. "/blog".
+baseurl: "" # the subpath of your site, e.g. "/blog".
 
-# Github and twitter are optional:
-minima:
-  social_links:
-    twitter: fastdotai
-    github: fastai
-
-# Set this to true to get LaTeX math equation support
-use_math: 
+twitter_username: OriolAbril
+orcid_id: 0000-0002-1847-9481
+google_scholar_id: srEgvQgAAAAJ
 
 # Set this to true to display the summary of your blog post under your title on the Home page.
 show_description: true
@@ -51,14 +49,11 @@ show_description: true
 # Set this to true to display image previews on home page, if they exist
 show_image: false
 
-# Set this to true to turn on annotations with hypothes.is (https://web.hypothes.is/)
-annotations: false
-
 # Set this to true to display tags on each post
 show_tags: true
 
 # Add your Google Analytics ID here if you have one and want to use it
-google_analytics: 
+google_analytics: UA-165101251-1
 
 exclude:
   - docker-compose.yml
@@ -74,7 +69,6 @@ default_badges:
   github: true
   binder: true
   colab: true
-  deepnote: true
 
 # Escape HTML in post descriptions
 html_escape:
@@ -82,7 +76,6 @@ html_escape:
 
 # Everything below here should be left alone. Modifications may break fastpages
 future: true
-theme: minima
 plugins:
   - jekyll-feed
   - jekyll-gist
@@ -101,7 +94,10 @@ plugins:
 paginate: 15
 paginate_path: /page:num/
 
-remote_theme: jekyll/minima
+feed:
+  path: atom.xml
+
+remote_theme: jekyllup/jekyll-theme-massively
 
 titles_from_headings:
   enabled:     true
@@ -117,10 +113,13 @@ kramdown:
   hard_wrap: false
   syntax_highlighter: rouge
 
-# to limit size of xml as it can grow quite large.
-feed:
-  posts_limit: 5 #default posts_limit: 10
-  excerpt_only: true
-  
-exclude:
-  - settings.ini
+# Front Matter Defaults
+defaults:
+  # _posts
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      read_time: true
+      twitter_large_image: false
+      use_math: false
